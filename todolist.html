@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>m</title>
+    <style>
+          html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+
+      .button {
+        background-color: red;
+        font-size: 1em;
+
+      }
+
+      .strike{
+        text-decoration: line-through;
+      }
+    </style>
+    
+  </head>
+
+  <body>
+
+
+    <h1>To do list</h1>
+    <div class="newtask">
+      <label>Write new taks: <input type="text"></label>
+      <button>Submit</button>
+    </div>
+    <ul></ul>
+
+  <script>
+  const inpt = document.querySelector("input")
+  const btn = document.querySelector(".newtask button")
+  const list = document.querySelector("ul")
+
+  btn.addEventListener("click",function(){
+    if (inpt.value == "") return
+    const listel = document.createElement("li")
+    listel.innerText = inpt.value
+
+    inpt.value = ""
+
+    let btn_done = document.createElement("button")
+    let btn_remove = document.createElement("button")
+
+    btn_done.innerHTML = "done"
+    btn_remove.innerHTML = "remove"
+
+    btn_done.addEventListener("click", function(e){
+      e.target.parentElement.classList.add("strike")
+    })
+
+    btn_remove.addEventListener("click", function(e){
+      e.target.parentElement.remove()
+    })
+
+    listel.appendChild(btn_done)
+    listel.appendChild(btn_remove)
+    list.append(listel)
+  })
+
+  </script>    
+
+
+  </body>
+
+</html>
